@@ -14,10 +14,10 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class TestbenchCommand extends Command {
-  // private boolean talonsrx0InitialState = true;
+  private boolean talonsrx0InitialState = true;
   private boolean victorsp0InitialState = true;
-  private boolean sparkmax0InitialState = true;
-  private boolean air0InitialState = true;
+  // private boolean sparkmax0InitialState = true;
+  // private boolean air0InitialState = true;
   private boolean succc0InitialState = true;
 
   public TestbenchCommand() {
@@ -29,23 +29,24 @@ public class TestbenchCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // talonsrx0InitialState = Robot.testbenchSubsystem.talonsrx0Switch.get();
+    talonsrx0InitialState = Robot.testbenchSubsystem.talonsrx0Switch.get();
     victorsp0InitialState = Robot.testbenchSubsystem.victorsp0Switch.get();
-    sparkmax0InitialState = Robot.testbenchSubsystem.sparkmax0Switch.get();
-    air0InitialState = Robot.testbenchSubsystem.air0Switch.get();
+    // sparkmax0InitialState = Robot.testbenchSubsystem.sparkmax0Switch.get();
+    // air0InitialState = Robot.testbenchSubsystem.air0Switch.get();
     succc0InitialState = Robot.testbenchSubsystem.succc0Switch.get();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    // DriverStation.reportWarning("talonsrx0switch:" + Robot.testbenchSubsystem.talonsrx0Switch.get(), false);
-    // if (Robot.testbenchSubsystem.talonsrx0Switch.get() != talonsrx0InitialState) {
-    //   Robot.testbenchSubsystem.talonsrx0.set(RobotMap.TALONSRX0_ONSPEED);
-    // } else {
-    //   Robot.testbenchSubsystem.talonsrx0.set(RobotMap.TALONSRX0_OFFSPEED);
-    // }
     DriverStation.reportWarning("key:"+Robot.testbenchSubsystem.keySwitch.get(), false);
+
+    // DriverStation.reportWarning("talonsrx0switch:" + Robot.testbenchSubsystem.talonsrx0Switch.get(), false);
+    if (Robot.testbenchSubsystem.talonsrx0Switch.get() != talonsrx0InitialState) {
+      Robot.testbenchSubsystem.talonsrx0.set(RobotMap.TALONSRX0_ONSPEED);
+    } else {
+      Robot.testbenchSubsystem.talonsrx0.set(RobotMap.TALONSRX0_OFFSPEED);
+    }
 
     if (Robot.testbenchSubsystem.victorsp0Switch.get() != victorsp0InitialState) {
       Robot.testbenchSubsystem.victorsp0.set(RobotMap.VICTORSP0_ONSPEED);
@@ -54,17 +55,17 @@ public class TestbenchCommand extends Command {
     }
 
     // DriverStation.reportWarning("sparkmax0switch:" + Robot.testbenchSubsystem.sparkmax0Switch.get(), false);
-    if (Robot.testbenchSubsystem.sparkmax0Switch.get() != sparkmax0InitialState) {
-      Robot.testbenchSubsystem.sparkmax0.set(RobotMap.SPARKMAX0_ONSPEED);
-    } else {
-      Robot.testbenchSubsystem.sparkmax0.set(RobotMap.SPARKMAX0_OFFSPEED);
-    }
+    // if (Robot.testbenchSubsystem.sparkmax0Switch.get() != sparkmax0InitialState) {
+    //   Robot.testbenchSubsystem.sparkmax0.set(RobotMap.SPARKMAX0_ONSPEED);
+    // } else {
+    //   Robot.testbenchSubsystem.sparkmax0.set(RobotMap.SPARKMAX0_OFFSPEED);
+    // }
     
-    if (Robot.testbenchSubsystem.air0Switch.get() != air0InitialState) {
-      Robot.testbenchSubsystem.air0.setClosedLoopControl(true);
-    } else {
-      Robot.testbenchSubsystem.air0.setClosedLoopControl(false);
-    }
+    // if (Robot.testbenchSubsystem.air0Switch.get() != air0InitialState) {
+    //   Robot.testbenchSubsystem.air0.setClosedLoopControl(true);
+    // } else {
+    //   Robot.testbenchSubsystem.air0.setClosedLoopControl(false);
+    // }
 
     if (Robot.testbenchSubsystem.succc0Switch.get() != succc0InitialState) {
       Robot.testbenchSubsystem.succc0.set(RobotMap.SUCCC0_ONSPEED);
